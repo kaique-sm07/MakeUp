@@ -12,7 +12,11 @@ import AlamofireImage
 import SwiftyJSON
 
 class FirstViewController: UIViewController {
-
+    
+    @IBOutlet weak var inspirationCollection: UICollectionView!
+    
+    var images = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Alamofire.request(.GET, "https://api.tumblr.com/v2/blog/makeupbeauty.tumblr.com/posts/photo", parameters: ["api_key": "njqwlWI3Z0wSW9foq6l6ca23OYm5xcmX2XqUPaZ8Ct1RsbLa3n"])
@@ -24,7 +28,8 @@ class FirstViewController: UIViewController {
                         Alamofire.request(.GET, bla["response"]["posts"][i]["photos"][0]["original_size"]["url"].string!)
                             .responseImage { response in
                                 if let image = response.result.value {
-                                    print("image downloaded: \(image)")
+                                    self.images.append(image)
+                                    self.inspirationCollection.reloadData()
                                 }
                         }
                     }
@@ -41,13 +46,21 @@ class FirstViewController: UIViewController {
 
 }
 
-//extension FirstViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-//    
-//    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as CollectionViewCell
-//        cell.backgroundColor = UIColor.blackColor()
-//        cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
-//        cell.imageVie
-//    }
-//}
+extension FirstViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inspirationCell", forIndexPath: indexPath) as! InspirationCellCollectionViewCell
+        cell.backgroundColor = UIColor.blackColor()
+        print(self.images)
+        cell.imagePost.image = self.images[indexPath.row]
+        
+        return cell
+    }
+}
 
