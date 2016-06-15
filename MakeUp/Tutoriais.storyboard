@@ -2,12 +2,13 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="WZr-Ai-Aco">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="gWb-pB-S1c">
             <objects>
-                <viewController id="2Yk-wP-TmX" sceneMemberID="viewController">
+                <viewController id="2Yk-wP-TmX" customClass="SecondViewController" customModule="MakeUp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Zw-8P-hNU"/>
                         <viewControllerLayoutGuide type="bottom" id="OW9-pV-ric"/>
@@ -15,8 +16,53 @@
                     <view key="view" contentMode="scaleToFill" id="cFT-0d-1YR">
                         <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-0o-h1Y">
+                                <rect key="frame" x="0.0" y="702" width="1285" height="378"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kgt-XH-8Il">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2Yk-wP-TmX" id="whR-AL-DrO"/>
+                                    <outlet property="delegate" destination="2Yk-wP-TmX" id="6Bk-7K-y4c"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4h-V3-C2r" userLabel="AVPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="1285" height="702"/>
+                                <color key="backgroundColor" red="0.97627981085526316" green="0.87058823529999996" blue="0.96687397203947367" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.54117647059999996" green="0.77647058820000003" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FbG-0o-h1Y" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="Cw7-7t-L1g"/>
+                            <constraint firstItem="OW9-pV-ric" firstAttribute="top" secondItem="FbG-0o-h1Y" secondAttribute="bottom" id="KN9-mO-ENb"/>
+                            <constraint firstAttribute="trailing" secondItem="u4h-V3-C2r" secondAttribute="trailing" id="Tcn-3e-SK3"/>
+                            <constraint firstItem="FbG-0o-h1Y" firstAttribute="height" secondItem="cFT-0d-1YR" secondAttribute="height" multiplier="0.35" id="VF7-7G-gdS"/>
+                            <constraint firstAttribute="trailing" secondItem="FbG-0o-h1Y" secondAttribute="trailing" id="W00-Du-Mhs"/>
+                            <constraint firstItem="u4h-V3-C2r" firstAttribute="top" secondItem="6Zw-8P-hNU" secondAttribute="bottom" id="lJd-3y-fSP"/>
+                            <constraint firstItem="FbG-0o-h1Y" firstAttribute="top" secondItem="u4h-V3-C2r" secondAttribute="bottom" id="o9x-KD-vj2"/>
+                            <constraint firstItem="u4h-V3-C2r" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="vcw-d6-4nh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="FbG-0o-h1Y" id="CiW-vU-xve"/>
+                        <outlet property="playerView" destination="u4h-V3-C2r" id="2Bm-0G-9pv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z91-q5-JIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
