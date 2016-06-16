@@ -18,6 +18,7 @@
 		301421791D09CD9600CAF2D4 /* Tutoriais.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */; };
 		3014217B1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */; };
 		3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */; };
+		3074BBB21D13255F00621270 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074BBB11D13255F00621270 /* CategoryCell.swift */; };
 		B7AF2C9D1D10D8DB007C6A8D /* HCYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF2C9C1D10D8DB007C6A8D /* HCYoutubeParser.m */; };
 		C18B9D40324F45A1F546BBAC /* Pods_MakeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5074CC92E4D25D22693FFF8 /* Pods_MakeUpTests.framework */; };
 		D1F74811557304C90B1E2106 /* Pods_MakeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C8A765CEB0EBF7B3ED5501 /* Pods_MakeUpUITests.framework */; };
@@ -61,6 +62,7 @@
 		301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutoriais.storyboard; sourceTree = "<group>"; };
 		3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		3074BBB11D13255F00621270 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		66E5F6515AF4E7268374E32F /* Pods_MakeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6978F322A102D1D582DAEBE0 /* Pods-MakeUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUpUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUpUITests/Pods-MakeUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7BBBD01BE1C7EC9E1CC08CB4 /* Pods-MakeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUpUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUpUITests/Pods-MakeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,17 +128,13 @@
 		301421421D09CC8700CAF2D4 /* MakeUp */ = {
 			isa = PBXGroup;
 			children = (
+				3074BBB51D13291700621270 /* Views */,
+				3074BBB41D13290800621270 /* Storyboards */,
+				3074BBB31D1328F900621270 /* ViewControllers */,
 				B7AF2C991D10D8CD007C6A8D /* Frameworks */,
-				301421721D09CD9600CAF2D4 /* FirstViewController.swift */,
-				301421731D09CD9600CAF2D4 /* Inspirations.storyboard */,
-				301421741D09CD9600CAF2D4 /* SecondViewController.swift */,
-				301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */,
-				301421701D09CD4400CAF2D4 /* Main.storyboard */,
 				301421431D09CC8700CAF2D4 /* AppDelegate.swift */,
 				3014214C1D09CC8700CAF2D4 /* Assets.xcassets */,
 				3014214E1D09CC8700CAF2D4 /* Info.plist */,
-				3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */,
-				3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */,
 			);
 			path = MakeUp;
 			sourceTree = "<group>";
@@ -157,6 +155,35 @@
 				301421641D09CC8700CAF2D4 /* Info.plist */,
 			);
 			path = MakeUpUITests;
+			sourceTree = "<group>";
+		};
+		3074BBB31D1328F900621270 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				301421721D09CD9600CAF2D4 /* FirstViewController.swift */,
+				301421741D09CD9600CAF2D4 /* SecondViewController.swift */,
+				3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3074BBB41D13290800621270 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				301421731D09CD9600CAF2D4 /* Inspirations.storyboard */,
+				301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */,
+				301421701D09CD4400CAF2D4 /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		3074BBB51D13291700621270 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */,
+				3074BBB11D13255F00621270 /* CategoryCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		4499F587DBA7B0822F795331 /* Frameworks */ = {
@@ -458,6 +485,7 @@
 				301421781D09CD9600CAF2D4 /* SecondViewController.swift in Sources */,
 				B7AF2C9D1D10D8DB007C6A8D /* HCYoutubeParser.m in Sources */,
 				3014217B1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift in Sources */,
+				3074BBB21D13255F00621270 /* CategoryCell.swift in Sources */,
 				3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */,
 				301421441D09CC8700CAF2D4 /* AppDelegate.swift in Sources */,
 				301421761D09CD9600CAF2D4 /* FirstViewController.swift in Sources */,

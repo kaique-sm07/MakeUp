@@ -62,5 +62,12 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         return cell
     }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("fullScreenView")
+        self.presentViewController(controller!, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(controller!, animated: true)
+    }
+
 }
 

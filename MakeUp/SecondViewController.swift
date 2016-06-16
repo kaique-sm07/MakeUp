@@ -33,7 +33,7 @@ class SecondViewController: UIViewController {
         // add label
         self.addLabel()
         // play video
-        self.playVideo()
+        //self.playVideo()
     }
     
     func addLabel() {
