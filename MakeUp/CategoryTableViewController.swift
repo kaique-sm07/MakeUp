@@ -9,6 +9,9 @@
 import UIKit
 
 class CategoryTableViewController: UITableViewController {
+    
+    let ocasiao: [String] = ["Casamento", "Trabalho", "Festa", "Almoco", "Encontro"]
+    let tons: [String] = ["Quente", "Frio", "Basico"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,21 +32,37 @@ class CategoryTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        if (section == 0) {
+            return 5
+        }
+        return 3
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("categoryCell", forIndexPath: indexPath) as! CategoryCell
+        
+        if indexPath.section == 0 {
+            cell.titleLabel.text = ocasiao[indexPath.row]
+        } else {
+            cell.titleLabel.text = tons[indexPath.row]
 
-        // Configure the cell...
+        }
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Ocasião"
+        }
+        
+        return "Tons"
     }
     
 
