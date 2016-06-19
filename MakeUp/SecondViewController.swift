@@ -116,6 +116,8 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
+    
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! TutorialCollectionViewCell
