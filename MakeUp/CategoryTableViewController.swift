@@ -7,13 +7,36 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CategoryTableViewController: UITableViewController {
     
     let ocasiao: [String] = ["Casamento", "Trabalho", "Festa", "Almoco", "Encontro"]
-    let tons: [String] = ["Quente", "Frio", "Basico"]
+    let tons: [String] = ["Quente", "Frio"]
+    let instensidade: [String] = ["Leve", "Pesado"]
+    var categoriaSelecionada: [Int] = [0,0,0]
+    var json:JSON = nil
+    var lastIndex: NSIndexPath = NSIndexPath(forRow: 40, inSection: 40)
+    weak var delegate: CategoryTableViewDelegate?
 
     override func viewDidLoad() {
+        
+        
+        if let path = NSBundle.mainBundle().pathForResource("imagens", ofType: "json") {
+            
+            do{
+                let jsonData = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
+                self.json = JSON(data: jsonData)
+                if self.json != JSON.null {
+                    print("jsonData:\(self.json)")
+                } else {
+                    print("could not get json from file, make sure that file contains valid json.")
+                }
+            } catch {
+                
+            }
+        }
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -32,7 +55,7 @@ class CategoryTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +63,7 @@ class CategoryTableViewController: UITableViewController {
         if (section == 0) {
             return 5
         }
-        return 3
+        return 2
     }
 
     
@@ -49,20 +72,73 @@ class CategoryTableViewController: UITableViewController {
         
         if indexPath.section == 0 {
             cell.titleLabel.text = ocasiao[indexPath.row]
-        } else {
+            cell.accessoryType = .None
+            if indexPath.row + 1 == categoriaSelecionada[0] {
+                cell.accessoryType = .Checkmark
+            }
+        } else if indexPath.section == 1 {
             cell.titleLabel.text = tons[indexPath.row]
+            cell.accessoryType = .None
+            if indexPath.row + 1 == categoriaSelecionada[1] {
+                cell.accessoryType = .Checkmark
+            }
 
+        } else {
+            cell.titleLabel.text = instensidade[indexPath.row]
+            cell.accessoryType = .None
+            if indexPath.row + 1 == categoriaSelecionada[2] {
+                cell.accessoryType = .Checkmark
+            }
         }
 
         return cell
     }
+
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Ocasião"
-        }
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        return "Tons"
+        categoriaSelecionada[indexPath.section] = indexPath.row + 1
+        var urls : [String] = []
+        print(self.json)
+        for (index,subJson):(String, JSON) in self.json["Imagens"] {
+            if subJson["ocasiao"].int == categoriaSelecionada[0] && subJson["tom"].int == categoriaSelecionada[1] && subJson["intensidade"].int == categoriaSelecionada[2] {
+                urls.append(subJson["url"].string!)
+            }
+        }
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("collectionView") as! FirstViewController
+        controller.changeCategory(urls)
+        self.tableView.reloadData()
+        
+        
+    }
+    
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! HeaderCell
+        
+        if section == 0 {
+            headerCell.name.text = "Ocasião"
+            return headerCell
+        } else if section == 1 {
+            headerCell.name.text = "Tons"
+            return headerCell
+        }
+        headerCell.name.text = "Intensidade"
+        return headerCell
+
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
+    
+    override func tableView(tableView: UITableView, didUpdateFocusInContext context: UITableViewFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        
+        tableView.didUpdateFocusInContext(context, withAnimationCoordinator: coordinator)
+        
+         (context.previouslyFocusedView as? CategoryCell)?.titleLabel.textColor = UIColor(red: 216/256, green: 216/256, blue: 216/256, alpha: 1)
+        (context.nextFocusedView as? CategoryCell)?.titleLabel.textColor = UIColor.blackColor()
+        
     }
     
 
