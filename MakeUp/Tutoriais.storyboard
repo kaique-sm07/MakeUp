@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" initialViewController="WZr-Ai-Aco">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -17,24 +18,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-0o-h1Y">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-0o-h1Y">
                                 <rect key="frame" x="0.0" y="702" width="1285" height="378"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kgt-XH-8Il">
-                                    <size key="itemSize" width="50" height="50"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="48" minimumInteritemSpacing="10" id="kgt-XH-8Il">
+                                    <size key="itemSize" width="400" height="200"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG" customClass="TutorialCollectionViewCell" customModule="MakeUp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="89" width="400" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="400" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageWhenAncestorFocused="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f2D-7i-jFp" userLabel="thumbnailImageView">
+                                                    <rect key="frame" x="8" y="8" width="384" height="184"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="f2D-7i-jFp" firstAttribute="top" secondItem="9su-dZ-vrG" secondAttribute="topMargin" id="IY3-o2-E5R"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="f2D-7i-jFp" secondAttribute="trailing" id="dgL-ib-xwL"/>
+                                            <constraint firstItem="f2D-7i-jFp" firstAttribute="leading" secondItem="9su-dZ-vrG" secondAttribute="leadingMargin" id="h9c-0b-TCD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="f2D-7i-jFp" secondAttribute="bottom" id="z2f-qk-WmC"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="thumbnailImageView" destination="f2D-7i-jFp" id="xjt-dZ-qSf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -44,7 +60,28 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4h-V3-C2r" userLabel="AVPlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="1285" height="702"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wlz-t4-dUg" userLabel="playerThumbnailView">
+                                        <rect key="frame" x="0.0" y="0.0" width="1285" height="702"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EhQ-Gi-Q07" userLabel="playButton">
+                                        <rect key="frame" x="524" y="233" width="237" height="236"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" backgroundImage="playButtom"/>
+                                        <connections>
+                                            <action selector="playButtonAction:" destination="2Yk-wP-TmX" eventType="primaryActionTriggered" id="ED5-wv-qLW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.97627981085526316" green="0.87058823529999996" blue="0.96687397203947367" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Wlz-t4-dUg" secondAttribute="trailing" id="VD8-sH-vgy"/>
+                                    <constraint firstItem="EhQ-Gi-Q07" firstAttribute="centerX" secondItem="u4h-V3-C2r" secondAttribute="centerX" id="ZeW-4s-5Db"/>
+                                    <constraint firstItem="Wlz-t4-dUg" firstAttribute="top" secondItem="u4h-V3-C2r" secondAttribute="top" id="frK-9h-7UF"/>
+                                    <constraint firstItem="Wlz-t4-dUg" firstAttribute="leading" secondItem="u4h-V3-C2r" secondAttribute="leading" id="g2V-Wc-26n"/>
+                                    <constraint firstItem="EhQ-Gi-Q07" firstAttribute="centerY" secondItem="u4h-V3-C2r" secondAttribute="centerY" id="lu9-T9-dIl"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wlz-t4-dUg" secondAttribute="bottom" id="y2b-rG-b4m"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.54117647059999996" green="0.77647058820000003" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -61,6 +98,8 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="FbG-0o-h1Y" id="CiW-vU-xve"/>
+                        <outlet property="playButton" destination="EhQ-Gi-Q07" id="J0B-MY-Wzk"/>
+                        <outlet property="playerThumbnailImageView" destination="Wlz-t4-dUg" id="tJb-Ly-NBm"/>
                         <outlet property="playerView" destination="u4h-V3-C2r" id="2Bm-0G-9pv"/>
                     </connections>
                 </viewController>
@@ -128,4 +167,7 @@
             <point key="canvasLocation" x="286" y="567"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playButtom" width="237" height="236"/>
+    </resources>
 </document>

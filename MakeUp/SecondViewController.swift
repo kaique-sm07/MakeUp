@@ -9,13 +9,47 @@
 import UIKit
 import AVKit
 import MediaPlayer
+import Alamofire
+
+struct ThumbnailStruct {
+    let id:String
+    let image:UIImage
+}
 
 class SecondViewController: UIViewController {
 
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var playerThumbnailImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var playerView: UIView!
     
+    let urlPrefix = "https://www.youtube.com/watch?v="
+    let imgUrlPrefix = "https://img.youtube.com/vi/"
+    let imgUrlSufix = "/hqdefault.jpg"
+    
+    let urlArray = ["B8d9FYuZglQ", "4hetO5zQINc", "a5rLN7mikmg", "Jq8b1u0vTRI", "R3qGjuDFOXk", "a4Ov8qvZ2_w", "07j29VphfRQ", "VEZuACLfmIY", "di5dk491IS4", "VKqwQnkzvTI"]
+    
+    var thumbnailImages: [ThumbnailStruct] = []
+    
     let videoController  = AVPlayerViewController()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        for id in self.urlArray {
+            self.getThumbnailImages(id)
+        }
+    }
+    
+    func getThumbnailImages(ID: String) {
+        Alamofire.request(.GET, imgUrlPrefix + ID + imgUrlSufix)
+            .responseImage { response in
+                if let image = response.result.value {
+                    self.thumbnailImages.append(ThumbnailStruct(id: ID, image: image))
+                    self.collectionView.reloadData()
+                }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,15 +59,20 @@ class SecondViewController: UIViewController {
         let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
         print(videos)
         let urlString : String = videos["hd720"] as! String
-//        let asset = AVAsset(URL: NSURL(string: urlString)!)
         
         //AVPlayer
         // add video player
         self.addVideoPlayer(urlString)
         // add label
-        self.addLabel()
+//        self.addLabel()
         // play video
-        //self.playVideo()
+//        self.playVideo()
+//        self.playerView.bringSubviewToFront(self.playButton)
+    }
+    
+    @IBAction func playButtonAction(sender: AnyObject) {
+        self.playVideo()
+        self.playButton.hidden = true
     }
     
     func addLabel() {
@@ -69,18 +108,26 @@ class SecondViewController: UIViewController {
 extension SecondViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return images.count
-        return 1
+        
+        if self.thumbnailImages.count > 0 {
+            return self.thumbnailImages.count
+        } else {
+            return 1
+        }
     }
     
+    
+    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inspirationCell", forIndexPath: indexPath) as! InspirationCellCollectionViewCell
-//        cell.backgroundColor = UIColor.blackColor()
-//        print(self.images)
-//        cell.imagePost.image = self.images[indexPath.row]
         
-//        return cell
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlaylistCell", forIndexPath: indexPath) as! TutorialCollectionViewCell
+        
+        if self.thumbnailImages.count > 0 {
+            cell.thumbnailImageView.image = self.thumbnailImages[indexPath.row].image
+        } else {
+            cell.thumbnailImageView.image = UIImage()
+        }
+        
         return cell
     }
 }
