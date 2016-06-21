@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 import MediaPlayer
 import Alamofire
+import AlamofireImage
 
 struct ThumbnailStruct {
     let id:String
