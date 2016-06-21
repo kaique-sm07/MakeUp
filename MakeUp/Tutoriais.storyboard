@@ -104,7 +104,7 @@
                         <color key="backgroundColor" red="0.75686274509803919" green="0.3529411764705882" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="okn-RW-e4R">
-                                <rect key="frame" x="0.0" y="199" width="634" height="66"/>
+                                <rect key="frame" x="0.0" y="199" width="594" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="okn-RW-e4R" id="sBb-b3-QZR">
                                     <rect key="frame" x="0.0" y="0.0" width="618" height="66"/>
@@ -139,11 +139,11 @@
             </objects>
             <point key="canvasLocation" x="1783" y="-4"/>
         </scene>
-        <!--Tutoriais-->
+        <!--Tutorials-->
         <scene sceneID="EHk-Em-nZ6">
             <objects>
                 <splitViewController id="WZr-Ai-Aco" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tutoriais" id="W1K-bd-iRh"/>
+                    <tabBarItem key="tabBarItem" title="Tutorials" id="W1K-bd-iRh"/>
                     <connections>
                         <segue destination="9XF-Kw-eFm" kind="relationship" relationship="masterViewController" id="5Zh-NP-F3h"/>
                         <segue destination="2Yk-wP-TmX" kind="relationship" relationship="detailViewController" id="hoA-hO-waq"/>
