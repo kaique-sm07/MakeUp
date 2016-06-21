@@ -18,7 +18,6 @@ struct ThumbnailStruct {
 
 class SecondViewController: UIViewController {
 
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var playerThumbnailImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var playerView: UIView!
@@ -36,12 +35,22 @@ class SecondViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.thumbnailImages = []
+        
         for id in self.urlArray {
-            self.getThumbnailImages(id)
+            self.getThumbnailImage(id)
         }
     }
     
-    func getThumbnailImages(ID: String) {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.thumbnailImages.count > 0 {
+            self.playerThumbnailImageView.image = self.thumbnailImages.first!.image
+        }
+    }
+    
+    func getThumbnailImage(ID: String) {
         Alamofire.request(.GET, imgUrlPrefix + ID + imgUrlSufix)
             .responseImage { response in
                 if let image = response.result.value {
@@ -55,25 +64,24 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         
         //HCYouTubeParser Test Project
-        let youTubeString : String = "https://www.youtube.com/watch?v=wWy89ey6tyw"
+        let youTubeString : String = self.urlPrefix + self.urlArray.first!
         let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
         print(videos)
         let urlString : String = videos["hd720"] as! String
         
+        if self.thumbnailImages.first != nil {
+            self.playerThumbnailImageView.image = self.thumbnailImages.first!.image
+        }
+        
         //AVPlayer
-        // add video player
         self.addVideoPlayer(urlString)
-        // add label
-//        self.addLabel()
-        // play video
-//        self.playVideo()
-//        self.playerView.bringSubviewToFront(self.playButton)
+        self.playVideo()
     }
     
-    @IBAction func playButtonAction(sender: AnyObject) {
-        self.playVideo()
-        self.playButton.hidden = true
-    }
+//    @IBAction func playButtonAction(sender: AnyObject) {
+//        self.playVideo()
+//        self.playButton.hidden = true
+//    }
     
     func addLabel() {
         let label = UILabel(frame: CGRectMake(50.0, 20.0, 320.0, 30.0))
