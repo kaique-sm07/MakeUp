@@ -18,6 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bm-Nb-cwK">
+                                <rect key="frame" x="0.0" y="0.0" width="1285" height="702"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7uX-GL-GSh">
+                                    <rect key="frame" x="0.0" y="0.0" width="1285" height="702"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-0o-h1Y">
                                 <rect key="frame" x="0.0" y="702" width="1285" height="378"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,6 +35,15 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="48" minY="0.0" maxX="48" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <visualEffectView key="backgroundView" opaque="NO" contentMode="scaleToFill" id="N7i-nS-lbR">
+                                    <rect key="frame" x="0.0" y="0.0" width="1285" height="378"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hyl-Wp-4kx">
+                                        <rect key="frame" x="0.0" y="0.0" width="1285" height="378"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </view>
+                                    <blurEffect style="dark"/>
+                                </visualEffectView>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG" customClass="TutorialCollectionViewCell" customModule="MakeUp" customModuleProvider="target">
                                         <rect key="frame" x="48" y="89" width="400" height="200"/>
@@ -74,14 +91,18 @@
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="9bm-Nb-cwK" firstAttribute="top" secondItem="6Zw-8P-hNU" secondAttribute="bottom" id="3Iw-gn-G3a"/>
                             <constraint firstItem="FbG-0o-h1Y" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="Cw7-7t-L1g"/>
                             <constraint firstItem="OW9-pV-ric" firstAttribute="top" secondItem="FbG-0o-h1Y" secondAttribute="bottom" id="KN9-mO-ENb"/>
                             <constraint firstAttribute="trailing" secondItem="u4h-V3-C2r" secondAttribute="trailing" id="Tcn-3e-SK3"/>
                             <constraint firstItem="FbG-0o-h1Y" firstAttribute="height" secondItem="cFT-0d-1YR" secondAttribute="height" multiplier="0.35" id="VF7-7G-gdS"/>
                             <constraint firstAttribute="trailing" secondItem="FbG-0o-h1Y" secondAttribute="trailing" id="W00-Du-Mhs"/>
+                            <constraint firstItem="FbG-0o-h1Y" firstAttribute="top" secondItem="9bm-Nb-cwK" secondAttribute="bottom" id="WZu-mM-l7S"/>
+                            <constraint firstAttribute="trailing" secondItem="9bm-Nb-cwK" secondAttribute="trailing" id="jHK-wd-Uix"/>
                             <constraint firstItem="u4h-V3-C2r" firstAttribute="top" secondItem="6Zw-8P-hNU" secondAttribute="bottom" id="lJd-3y-fSP"/>
                             <constraint firstItem="FbG-0o-h1Y" firstAttribute="top" secondItem="u4h-V3-C2r" secondAttribute="bottom" id="o9x-KD-vj2"/>
                             <constraint firstItem="u4h-V3-C2r" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="vcw-d6-4nh"/>
+                            <constraint firstItem="9bm-Nb-cwK" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="vn9-zB-lpd"/>
                         </constraints>
                     </view>
                     <connections>
