@@ -23,6 +23,12 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var playerView: UIView!
     
+    //outlet for buttons
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var previousButton: UIButton!
+    
+    
     let urlPrefix = "https://www.youtube.com/watch?v="
     let imgUrlPrefix = "https://img.youtube.com/vi/"
     let imgUrlSufix = "/hqdefault.jpg"
@@ -60,6 +66,7 @@ class SecondViewController: UIViewController {
 //        }
         
         self.playVideo()
+        self.playButton.setBackgroundImage(UIImage(named: "pause"), forState: .Normal)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -67,6 +74,7 @@ class SecondViewController: UIViewController {
         
         //pause the video
         self.pauseVideo()
+        self.playButton.setBackgroundImage(UIImage(named: "play"), forState: .Normal)
     }
     
     //function to get a youtube thumbnail image from the video ID
@@ -115,7 +123,7 @@ class SecondViewController: UIViewController {
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
         let currentTime: Float64 = elapsedTime
         let totalTime: Float64 = CMTimeGetSeconds((self.videoController.player?.currentItem?.duration)!)
-        self.currentTimeLabel.text = String(format: "%2d:%02d / %2d:%02d", ((lround(currentTime) / 60) % 60), lround(currentTime) % 60, ((lround(totalTime) / 60) % 60), lround(totalTime) % 60)
+        self.currentTimeLabel.text = String(format: "%2d:%02d /%2d:%02d", ((lround(currentTime) / 60) % 60), lround(currentTime) % 60, ((lround(totalTime) / 60) % 60), lround(totalTime) % 60)
     }
     
     private func observeTime(elapsedTime: CMTime) {
@@ -126,8 +134,41 @@ class SecondViewController: UIViewController {
         }
     }
     
-    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
-        print("previous: \(context.previouslyFocusedView), next: \(context.nextFocusedView)")
+    //ACTIONS
+    @IBAction func previousAction(sender: AnyObject) {
+        //change to previous video
+        if (self.selectedItem! - 1) > 0 {
+            
+            self.selectedItem = self.selectedItem! - 1
+            let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
+            let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+            let urlString : String = videos["hd720"] as! String
+            
+            self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+            self.playVideo()
+        } else {
+            let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
+            let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+            let urlString : String = videos["hd720"] as! String
+            
+            self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+            self.playVideo()
+        }
+    }
+    
+    @IBAction func nextAction(sender: AnyObject) {
+        //change to next video
+        self.itemDidFinishPlaying()
+    }
+    
+    @IBAction func playPauseAction(sender: AnyObject) {
+        //play or pause depending on the current status
+        if ((self.videoController.player?.rate != 0) && (self.videoController.player?.error == nil)) {
+            //player is playing
+            self.pauseVideo()
+        } else {
+            self.playVideo()
+        }
     }
     
     //method called when video ends
@@ -136,6 +177,14 @@ class SecondViewController: UIViewController {
         if (self.selectedItem! + 1) < self.thumbnailImages.count {
             
             self.selectedItem = self.selectedItem! + 1
+            let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
+            let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+            let urlString : String = videos["hd720"] as! String
+            
+            self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+            self.playVideo()
+        } else {
+            self.selectedItem = 0
             let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
             let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
             let urlString : String = videos["hd720"] as! String
@@ -172,10 +221,12 @@ class SecondViewController: UIViewController {
     
     func playVideo() {
         self.videoController.player?.play()
+        self.playButton.setBackgroundImage(UIImage(named: "pause"), forState: .Normal)
     }
     
     func pauseVideo() {
         self.videoController.player?.pause()
+        self.playButton.setBackgroundImage(UIImage(named: "play"), forState: .Normal)
     }
 }
 
