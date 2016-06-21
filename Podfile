@@ -5,9 +5,10 @@ source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
 target 'MakeUp' do
+    pod 'SDWebImage'
+    pod 'SwiftyJSON'
     pod 'Alamofire', '~> 3.4'
     pod 'AlamofireImage', '~> 2.0'
-    pod 'SwiftyJSON'
 end
 
 
