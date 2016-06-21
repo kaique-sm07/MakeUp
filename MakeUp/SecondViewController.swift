@@ -34,6 +34,8 @@ class SecondViewController: UIViewController {
     
     let videoController  = AVPlayerViewController()
     
+    var selectedItem:Int?
+    
     //time remaining on video
     var timeObserver: AnyObject!
     var timeRemainingLabel: UILabel = UILabel()
@@ -51,11 +53,13 @@ class SecondViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        //populate the player thumbnail image with the first image on the playlist
         if self.thumbnailImages.count > 0 {
             self.playerThumbnailImageView.image = self.thumbnailImages.first!.image
         }
     }
     
+    //function to get a youtube thumbnail image from the video ID
     func getThumbnailImage(ID: String) {
         Alamofire.request(.GET, imgUrlPrefix + ID + imgUrlSufix)
             .responseImage { response in
@@ -69,20 +73,20 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //HCYouTubeParser Test Project
-        let youTubeString : String = self.urlPrefix + self.urlArray.first!
-        let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
-//        print(videos)
-        let urlString : String = videos["hd720"] as! String
+        //set the selectedItem to 0 the first time
+        self.selectedItem = 0
         
-        if self.thumbnailImages.first != nil {
-            self.playerThumbnailImageView.image = self.thumbnailImages.first!.image
-        }
+        //Notification that is sent when video ends
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SecondViewController.itemDidFinishPlaying), name: AVPlayerItemDidPlayToEndTimeNotification, object: self.videoController.player?.currentItem)
+        
+        //HCYouTubeParser Test Project
+        let youTubeString : String = self.urlPrefix + self.urlArray[self.selectedItem!]
+        let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+        let urlString : String = videos["hd720"] as! String
         
         //AVPlayer
         self.addVideoPlayer()
         self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
-//        self.playVideo()
         self.videoController.showsPlaybackControls = true
         self.playerView.bringSubviewToFront(self.videoController.view)
         
@@ -96,6 +100,21 @@ class SecondViewController: UIViewController {
     
     deinit {
         self.videoController.player?.removeTimeObserver(timeObserver)
+    }
+    
+    //method called when video ends
+    func itemDidFinishPlaying() {
+        //play the next video on the playlist
+        if (self.selectedItem! + 1) < self.thumbnailImages.count {
+            
+            self.selectedItem = self.selectedItem! + 1
+            let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
+            let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+            let urlString : String = videos["hd720"] as! String
+            
+            self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+            self.playVideo()
+        }
     }
     
 //    func addLabel() {
@@ -139,8 +158,11 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let youTubeString : String = self.urlPrefix + (self.thumbnailImages[indexPath.row].id)
+    func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
+        //update selectedItem
+        self.selectedItem = indexPath.row
+        
+        let youTubeString : String = self.urlPrefix + (self.thumbnailImages[self.selectedItem!].id)
         let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
         let urlString : String = videos["hd720"] as! String
         
