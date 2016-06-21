@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class CategoryTableViewController: UITableViewController {
     
-    let ocasiao: [String] = ["Casamento", "Trabalho", "Festa", "Almoco", "Encontro"]
+    let ocasiao: [String] = ["Casamento", "Trabalho", "Festa", "Almoço", "Encontro"]
     let tons: [String] = ["Quente", "Frio"]
     let instensidade: [String] = ["Leve", "Pesado"]
     var categoriaSelecionada: [Int] = [0,0,0]
@@ -27,11 +27,6 @@ class CategoryTableViewController: UITableViewController {
             do{
                 let jsonData = try NSData(contentsOfURL: NSURL(fileURLWithPath: path), options: NSDataReadingOptions.DataReadingMappedIfSafe)
                 self.json = JSON(data: jsonData)
-                if self.json != JSON.null {
-                    print("jsonData:\(self.json)")
-                } else {
-                    print("could not get json from file, make sure that file contains valid json.")
-                }
             } catch {
                 
             }
@@ -44,6 +39,18 @@ class CategoryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        var urls : [String] = []
+        for (index,subJson):(String, JSON) in self.json["Imagens"] {
+            if (subJson["ocasiao"].int == categoriaSelecionada[0] || categoriaSelecionada[0] == 0) && (subJson["tom"].int == categoriaSelecionada[1] || categoriaSelecionada[1] == 0) && (subJson["intensidade"].int == categoriaSelecionada[2] || categoriaSelecionada[2] == 0){
+                urls.append(subJson["url"].string!)
+            }
+        }
+        self.tableView.reloadData()
+        self.performSegueWithIdentifier("detail", sender: urls)
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,17 +104,22 @@ class CategoryTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        categoriaSelecionada[indexPath.section] = indexPath.row + 1
+        if categoriaSelecionada[indexPath.section] == indexPath.row + 1 {
+            categoriaSelecionada[indexPath.section] = 0
+        } else {
+            categoriaSelecionada[indexPath.section] = indexPath.row + 1
+
+        }
+        
         var urls : [String] = []
-        print(self.json)
         for (index,subJson):(String, JSON) in self.json["Imagens"] {
-            if subJson["ocasiao"].int == categoriaSelecionada[0] && subJson["tom"].int == categoriaSelecionada[1] && subJson["intensidade"].int == categoriaSelecionada[2] {
+            if (subJson["ocasiao"].int == categoriaSelecionada[0] || categoriaSelecionada[0] == 0) && (subJson["tom"].int == categoriaSelecionada[1] || categoriaSelecionada[1] == 0) && (subJson["intensidade"].int == categoriaSelecionada[2] || categoriaSelecionada[2] == 0){
                 urls.append(subJson["url"].string!)
             }
         }
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("collectionView") as! FirstViewController
-        controller.changeCategory(urls)
         self.tableView.reloadData()
+        self.performSegueWithIdentifier("detail", sender: urls)
+
         
         
     }
@@ -139,6 +151,14 @@ class CategoryTableViewController: UITableViewController {
          (context.previouslyFocusedView as? CategoryCell)?.titleLabel.textColor = UIColor(red: 216/256, green: 216/256, blue: 216/256, alpha: 1)
         (context.nextFocusedView as? CategoryCell)?.titleLabel.textColor = UIColor.blackColor()
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "detail") {
+            let secondViewController = segue.destinationViewController as! FirstViewController
+            let urls = sender as! [String]
+            secondViewController.images = urls
+        }
     }
     
 
