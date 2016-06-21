@@ -11,7 +11,7 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController, CategoryTableViewDelegate {
     
     @IBOutlet weak var inspirationCollection: UICollectionView!
     
@@ -36,6 +36,10 @@ class FirstViewController: UIViewController {
                     
                 }
         }
+            }
+    
+    func changeCategory(images: [String]) {
+        print(images)
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +61,7 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("inspirationCell", forIndexPath: indexPath) as! InspirationCellCollectionViewCell
         cell.backgroundColor = UIColor.blackColor()
-        print(self.images)
+        //print(self.images)
         cell.imagePost.image = self.images[indexPath.row]
         
         return cell

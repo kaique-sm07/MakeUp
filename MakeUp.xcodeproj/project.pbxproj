@@ -19,6 +19,9 @@
 		3014217B1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */; };
 		3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */; };
 		3074BBB21D13255F00621270 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074BBB11D13255F00621270 /* CategoryCell.swift */; };
+		3074BBB81D132A2800621270 /* InspirationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074BBB71D132A2800621270 /* InspirationProtocol.swift */; };
+		307BA0641D145AE7008BCBD6 /* imagens.json in Resources */ = {isa = PBXBuildFile; fileRef = 307BA0631D145AE7008BCBD6 /* imagens.json */; };
+		307C4FC21D184BBC007C05E4 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307C4FC11D184BBC007C05E4 /* HeaderCell.swift */; };
 		B7A64C621D16E53B00245431 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A64C611D16E53B00245431 /* TutorialCollectionViewCell.swift */; };
 		B7AF2C9D1D10D8DB007C6A8D /* HCYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AF2C9C1D10D8DB007C6A8D /* HCYoutubeParser.m */; };
 		C18B9D40324F45A1F546BBAC /* Pods_MakeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5074CC92E4D25D22693FFF8 /* Pods_MakeUpTests.framework */; };
@@ -64,6 +67,9 @@
 		3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		3074BBB11D13255F00621270 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		3074BBB71D132A2800621270 /* InspirationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationProtocol.swift; sourceTree = "<group>"; };
+		307BA0631D145AE7008BCBD6 /* imagens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imagens.json; sourceTree = "<group>"; };
+		307C4FC11D184BBC007C05E4 /* HeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		66E5F6515AF4E7268374E32F /* Pods_MakeUp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MakeUp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6978F322A102D1D582DAEBE0 /* Pods-MakeUpUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUpUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUpUITests/Pods-MakeUpUITests.release.xcconfig"; sourceTree = "<group>"; };
 		7BBBD01BE1C7EC9E1CC08CB4 /* Pods-MakeUpUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUpUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUpUITests/Pods-MakeUpUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 		301421421D09CC8700CAF2D4 /* MakeUp */ = {
 			isa = PBXGroup;
 			children = (
+				307BA0631D145AE7008BCBD6 /* imagens.json */,
+				3074BBB61D13298200621270 /* Protocols */,
 				3074BBB51D13291700621270 /* Views */,
 				3074BBB41D13290800621270 /* Storyboards */,
 				3074BBB31D1328F900621270 /* ViewControllers */,
@@ -185,8 +193,17 @@
 				B7A64C611D16E53B00245431 /* TutorialCollectionViewCell.swift */,
 				3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */,
 				3074BBB11D13255F00621270 /* CategoryCell.swift */,
+				307C4FC11D184BBC007C05E4 /* HeaderCell.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		3074BBB61D13298200621270 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3074BBB71D132A2800621270 /* InspirationProtocol.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		4499F587DBA7B0822F795331 /* Frameworks */ = {
@@ -338,6 +355,7 @@
 				301421711D09CD4400CAF2D4 /* Main.storyboard in Resources */,
 				301421771D09CD9600CAF2D4 /* Inspirations.storyboard in Resources */,
 				301421791D09CD9600CAF2D4 /* Tutoriais.storyboard in Resources */,
+				307BA0641D145AE7008BCBD6 /* imagens.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,9 +507,11 @@
 				B7AF2C9D1D10D8DB007C6A8D /* HCYoutubeParser.m in Sources */,
 				3014217B1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift in Sources */,
 				3074BBB21D13255F00621270 /* CategoryCell.swift in Sources */,
+				307C4FC21D184BBC007C05E4 /* HeaderCell.swift in Sources */,
 				B7A64C621D16E53B00245431 /* TutorialCollectionViewCell.swift in Sources */,
 				3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */,
 				301421441D09CC8700CAF2D4 /* AppDelegate.swift in Sources */,
+				3074BBB81D132A2800621270 /* InspirationProtocol.swift in Sources */,
 				301421761D09CD9600CAF2D4 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
