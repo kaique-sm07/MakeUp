@@ -38,7 +38,8 @@ class SecondViewController: UIViewController {
     
     //time remaining on video
     var timeObserver: AnyObject!
-    var timeRemainingLabel: UILabel = UILabel()
+    
+    @IBOutlet weak var currentTimeLabel: UILabel!
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,9 +55,9 @@ class SecondViewController: UIViewController {
         super.viewDidAppear(animated)
         
         //populate the player thumbnail image with the first image on the playlist
-        if self.thumbnailImages.count > 0 {
-            self.playerThumbnailImageView.image = self.thumbnailImages[self.selectedItem!].image
-        }
+//        if self.thumbnailImages.count > 0 {
+//            self.playerThumbnailImageView.image = self.thumbnailImages[self.selectedItem!].image
+//        }
         
         self.playVideo()
     }
@@ -96,25 +97,14 @@ class SecondViewController: UIViewController {
         //AVPlayer
         self.addVideoPlayer()
         self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
-        self.videoController.showsPlaybackControls = true
-        self.playerView.bringSubviewToFront(self.videoController.view)
+
+        self.videoController.view.userInteractionEnabled = false
         
         //time observer
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = self.videoController.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
-            
-//            print("elapsedTime now %f\(CMTimeGetSeconds(elapsedTime))")
             self.observeTime(elapsedTime)
         }
-        
-        self.timeRemainingLabel.textColor = UIColor.whiteColor()
-        self.videoController.view.addSubview(self.timeRemainingLabel)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        let controlsHeight: CGFloat = 50
-        let controlsY: CGFloat = self.playerView.bounds.size.height - controlsHeight
-        self.timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
     }
     
     deinit {
@@ -123,8 +113,9 @@ class SecondViewController: UIViewController {
     
     
     private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
-        let timeRemaining: Float64 = CMTimeGetSeconds((self.videoController.player?.currentItem?.duration)!) - elapsedTime
-        self.timeRemainingLabel.text = String("%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+        let currentTime: Float64 = elapsedTime
+        let totalTime: Float64 = CMTimeGetSeconds((self.videoController.player?.currentItem?.duration)!)
+        self.currentTimeLabel.text = String(format: "%2d:%02d / %2d:%02d", ((lround(currentTime) / 60) % 60), lround(currentTime) % 60, ((lround(totalTime) / 60) % 60), lround(totalTime) % 60)
     }
     
     private func observeTime(elapsedTime: CMTime) {
@@ -133,6 +124,10 @@ class SecondViewController: UIViewController {
             let elapsedTime = CMTimeGetSeconds(elapsedTime)
             self.updateTimeLabel(elapsedTime, duration: duration)
         }
+    }
+    
+    override func didUpdateFocusInContext(context: UIFocusUpdateContext, withAnimationCoordinator coordinator: UIFocusAnimationCoordinator) {
+        print("previous: \(context.previouslyFocusedView), next: \(context.nextFocusedView)")
     }
     
     //method called when video ends

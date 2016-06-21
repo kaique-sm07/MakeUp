@@ -635,7 +635,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1212A0887306B248480F9737 /* Pods-MakeUp.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MakeUp/Info.plist;
@@ -651,7 +651,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1FBB120395DC2AAA955366DD /* Pods-MakeUp.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MakeUp/Info.plist;
