@@ -65,7 +65,6 @@
                                         <rect key="frame" x="48" y="48" width="1189" height="606"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Wlz-t4-dUg" secondAttribute="trailing" constant="48" id="VD8-sH-vgy"/>
                                     <constraint firstItem="Wlz-t4-dUg" firstAttribute="top" secondItem="u4h-V3-C2r" secondAttribute="top" constant="48" id="frK-9h-7UF"/>
@@ -74,7 +73,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.54117647059999996" green="0.77647058820000003" blue="0.84313725490000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FbG-0o-h1Y" firstAttribute="leading" secondItem="cFT-0d-1YR" secondAttribute="leading" id="Cw7-7t-L1g"/>
                             <constraint firstItem="OW9-pV-ric" firstAttribute="top" secondItem="FbG-0o-h1Y" secondAttribute="bottom" id="KN9-mO-ENb"/>
@@ -103,10 +101,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="40" sectionFooterHeight="40" id="bNi-0H-bzu">
                         <rect key="frame" x="0.0" y="0.0" width="634" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.64372238010000005" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.75686274509803919" green="0.3529411764705882" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="okn-RW-e4R">
-                                <rect key="frame" x="0.0" y="199" width="594" height="66"/>
+                                <rect key="frame" x="0.0" y="199" width="634" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="okn-RW-e4R" id="sBb-b3-QZR">
                                     <rect key="frame" x="0.0" y="0.0" width="618" height="66"/>

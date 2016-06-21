@@ -26,11 +26,16 @@ class SecondViewController: UIViewController {
     let imgUrlPrefix = "https://img.youtube.com/vi/"
     let imgUrlSufix = "/hqdefault.jpg"
     
-    let urlArray = ["B8d9FYuZglQ", "4hetO5zQINc", "a5rLN7mikmg", "Jq8b1u0vTRI", "R3qGjuDFOXk", "a4Ov8qvZ2_w", "07j29VphfRQ", "VEZuACLfmIY", "di5dk491IS4", "VKqwQnkzvTI"]
+    //initial array with youtube video IDs
+    let urlArray = ["B8d9FYuZglQ", "4hetO5zQINc", "a5rLN7mikmg", "Jq8b1u0vTRI", "R3qGjuDFOXk", "a4Ov8qvZ2_w", "07j29VphfRQ", "VEZuACLfmIY", "VKqwQnkzvTI"]
     
     var thumbnailImages: [ThumbnailStruct] = []
     
     let videoController  = AVPlayerViewController()
+    
+    //time remaining on video
+    var timeObserver: AnyObject!
+    var timeRemainingLabel: UILabel = UILabel()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -66,7 +71,7 @@ class SecondViewController: UIViewController {
         //HCYouTubeParser Test Project
         let youTubeString : String = self.urlPrefix + self.urlArray.first!
         let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
-        print(videos)
+//        print(videos)
         let urlString : String = videos["hd720"] as! String
         
         if self.thumbnailImages.first != nil {
@@ -74,42 +79,51 @@ class SecondViewController: UIViewController {
         }
         
         //AVPlayer
-        self.addVideoPlayer(urlString)
-        self.playVideo()
+        self.addVideoPlayer()
+        self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+//        self.playVideo()
+        self.videoController.showsPlaybackControls = true
+        self.playerView.bringSubviewToFront(self.videoController.view)
+        
+        //time observer
+        let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
+        timeObserver = self.videoController.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
+            
+            print("elapsedTime now %f\(CMTimeGetSeconds(elapsedTime))")
+        }
     }
     
-//    @IBAction func playButtonAction(sender: AnyObject) {
-//        self.playVideo()
-//        self.playButton.hidden = true
+    deinit {
+        self.videoController.player?.removeTimeObserver(timeObserver)
+    }
+    
+//    func addLabel() {
+//        let label = UILabel(frame: CGRectMake(50.0, 20.0, 320.0, 30.0))
+//        label.text = "My Awesome video"
+//        
+//        self.playerView.addSubview(label)
 //    }
     
-    func addLabel() {
-        let label = UILabel(frame: CGRectMake(50.0, 20.0, 320.0, 30.0))
-        label.text = "My Awesome video"
+    func addVideoPlayer() {
         
-        self.playerView.addSubview(label)
-    }
-    
-    func addVideoPlayer(url: String) {
+//        let url = NSURL(string: url)
         
-        let url = NSURL(string: url)
-        
-        videoController.view.frame = self.playerView.bounds
-        videoController.showsPlaybackControls = false
+        self.videoController.view.frame = self.playerView.bounds
+        self.videoController.showsPlaybackControls = false
         
         // Possible Options:
         // AVLayerVideoGravityResize (default)
         // AVLayerVideoGravityResizeAspect
         // AVLayerVideoGravityResizeAspectFill
-        videoController.videoGravity = AVLayerVideoGravityResizeAspect
+        self.videoController.videoGravity = AVLayerVideoGravityResizeAspect
         
         
-        videoController.player = AVPlayer(URL: url!)
-        self.playerView.addSubview(videoController.view)
+        videoController.player = AVPlayer()
+        self.playerView.addSubview(self.videoController.view)
     }
     
     func playVideo() {
-        videoController.player?.play()
+        self.videoController.player?.play()
     }
 }
 
@@ -124,7 +138,14 @@ extension SecondViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
     
-    
+    func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
+        let youTubeString : String = self.urlPrefix + (self.thumbnailImages[indexPath.row].id)
+        let videos : NSDictionary = HCYoutubeParser.h264videosWithYoutubeURL(NSURL(string: youTubeString))
+        let urlString : String = videos["hd720"] as! String
+        
+        self.videoController.player?.replaceCurrentItemWithPlayerItem(AVPlayerItem(URL: NSURL(string: urlString)!))
+        self.playVideo()
+    }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
