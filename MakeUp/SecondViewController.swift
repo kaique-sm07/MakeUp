@@ -55,8 +55,17 @@ class SecondViewController: UIViewController {
         
         //populate the player thumbnail image with the first image on the playlist
         if self.thumbnailImages.count > 0 {
-            self.playerThumbnailImageView.image = self.thumbnailImages.first!.image
+            self.playerThumbnailImageView.image = self.thumbnailImages[self.selectedItem!].image
         }
+        
+        self.playVideo()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        //pause the video
+        self.pauseVideo()
     }
     
     //function to get a youtube thumbnail image from the video ID
@@ -94,12 +103,36 @@ class SecondViewController: UIViewController {
         let timeInterval: CMTime = CMTimeMakeWithSeconds(1.0, 10)
         timeObserver = self.videoController.player?.addPeriodicTimeObserverForInterval(timeInterval, queue: dispatch_get_main_queue()) { (elapsedTime: CMTime) -> Void in
             
-            print("elapsedTime now %f\(CMTimeGetSeconds(elapsedTime))")
+//            print("elapsedTime now %f\(CMTimeGetSeconds(elapsedTime))")
+            self.observeTime(elapsedTime)
         }
+        
+        self.timeRemainingLabel.textColor = UIColor.whiteColor()
+        self.videoController.view.addSubview(self.timeRemainingLabel)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let controlsHeight: CGFloat = 50
+        let controlsY: CGFloat = self.playerView.bounds.size.height - controlsHeight
+        self.timeRemainingLabel.frame = CGRect(x: 5, y: controlsY, width: 60, height: controlsHeight)
     }
     
     deinit {
         self.videoController.player?.removeTimeObserver(timeObserver)
+    }
+    
+    
+    private func updateTimeLabel(elapsedTime: Float64, duration: Float64) {
+        let timeRemaining: Float64 = CMTimeGetSeconds((self.videoController.player?.currentItem?.duration)!) - elapsedTime
+        self.timeRemainingLabel.text = String("%02d:%02d", ((lround(timeRemaining) / 60) % 60), lround(timeRemaining) % 60)
+    }
+    
+    private func observeTime(elapsedTime: CMTime) {
+        let duration = CMTimeGetSeconds(elapsedTime)
+        if (isfinite(duration)) {
+            let elapsedTime = CMTimeGetSeconds(elapsedTime)
+            self.updateTimeLabel(elapsedTime, duration: duration)
+        }
     }
     
     //method called when video ends
@@ -144,6 +177,10 @@ class SecondViewController: UIViewController {
     
     func playVideo() {
         self.videoController.player?.play()
+    }
+    
+    func pauseVideo() {
+        self.videoController.player?.pause()
     }
 }
 
