@@ -9,7 +9,7 @@
         <!--Second View Controller-->
         <scene sceneID="gWb-pB-S1c">
             <objects>
-                <viewController id="2Yk-wP-TmX" customClass="SecondViewController" customModule="MakeUp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2Yk-wP-TmX" customClass="SecondViewController" customModule="Make_TV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Zw-8P-hNU"/>
                         <viewControllerLayoutGuide type="bottom" id="OW9-pV-ric"/>
@@ -44,7 +44,7 @@
                                     <blurEffect style="dark"/>
                                 </visualEffectView>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG" customClass="TutorialCollectionViewCell" customModule="MakeUp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlaylistCell" id="9su-dZ-vrG" customClass="TutorialCollectionViewCell" customModule="Make_TV" customModuleProvider="target">
                                         <rect key="frame" x="48" y="35" width="400" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -85,7 +85,7 @@
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ems-vJ-GR8" userLabel="controllersView">
                                         <rect key="frame" x="321" y="89" width="642" height="65"/>
@@ -218,7 +218,7 @@
                         <color key="backgroundColor" red="0.75686274509803919" green="0.3529411764705882" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="okn-RW-e4R">
-                                <rect key="frame" x="0.0" y="54" width="594" height="66"/>
+                                <rect key="frame" x="0.0" y="54" width="634" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="okn-RW-e4R" id="sBb-b3-QZR">
                                     <rect key="frame" x="0.0" y="0.0" width="618" height="66"/>

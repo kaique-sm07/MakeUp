@@ -37,5 +37,9 @@
 	<array>
 		<string>arm64</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Vonique 64 Bold.ttf</string>
+	</array>
 </dict>
 </plist>

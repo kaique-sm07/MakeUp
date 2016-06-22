@@ -18,6 +18,10 @@ class FirstViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let appearance = UITabBarItem.appearance()
+        let color : UIColor = UIColor(red: 187.0/255.0, green: 187.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        let attributes = [NSFontAttributeName:UIFont(name: "Vonique 64", size: 50)!, NSForegroundColorAttributeName: color]
+        appearance.setTitleTextAttributes(attributes, forState: .Normal)
                     }
 
 
@@ -52,8 +56,10 @@ extension FirstViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let controller = storyboard?.instantiateViewControllerWithIdentifier("fullScreenView")
-        self.presentViewController(controller!, animated: true, completion: nil)
+        let controller = storyboard?.instantiateViewControllerWithIdentifier("fullScreenView") as! FullScreenViewController
+        controller.images = self.images
+        controller.indexPathLoad = indexPath
+        self.presentViewController(controller, animated: true, completion: nil)
 //        self.navigationController?.pushViewController(controller!, animated: true)
     }
 

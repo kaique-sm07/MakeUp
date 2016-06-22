@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300D7BE01D19A5DC00348305 /* FullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D7BDF1D19A5DC00348305 /* FullScreenViewController.swift */; };
+		300D7BE21D19A60700348305 /* FullScreenCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D7BE11D19A60700348305 /* FullScreenCollectionViewCell.swift */; };
 		301421441D09CC8700CAF2D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301421431D09CC8700CAF2D4 /* AppDelegate.swift */; };
 		3014214D1D09CC8700CAF2D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3014214C1D09CC8700CAF2D4 /* Assets.xcassets */; };
 		301421581D09CC8700CAF2D4 /* MakeUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 301421571D09CC8700CAF2D4 /* MakeUpTests.swift */; };
@@ -18,6 +20,7 @@
 		301421791D09CD9600CAF2D4 /* Tutoriais.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */; };
 		3014217B1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */; };
 		3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */; };
+		301A16551D1B0C7E0059A254 /* Vonique 64 Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 301A16541D1B0C7E0059A254 /* Vonique 64 Bold.ttf */; };
 		3074BBB21D13255F00621270 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074BBB11D13255F00621270 /* CategoryCell.swift */; };
 		3074BBB81D132A2800621270 /* InspirationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3074BBB71D132A2800621270 /* InspirationProtocol.swift */; };
 		307BA0641D145AE7008BCBD6 /* imagens.json in Resources */ = {isa = PBXBuildFile; fileRef = 307BA0631D145AE7008BCBD6 /* imagens.json */; };
@@ -49,7 +52,9 @@
 /* Begin PBXFileReference section */
 		1212A0887306B248480F9737 /* Pods-MakeUp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUp/Pods-MakeUp.debug.xcconfig"; sourceTree = "<group>"; };
 		1FBB120395DC2AAA955366DD /* Pods-MakeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MakeUp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MakeUp/Pods-MakeUp.release.xcconfig"; sourceTree = "<group>"; };
-		301421401D09CC8700CAF2D4 /* MakeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MakeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		300D7BDF1D19A5DC00348305 /* FullScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenViewController.swift; sourceTree = "<group>"; };
+		300D7BE11D19A60700348305 /* FullScreenCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenCollectionViewCell.swift; sourceTree = "<group>"; };
+		301421401D09CC8700CAF2D4 /* Make TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Make TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		301421431D09CC8700CAF2D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3014214C1D09CC8700CAF2D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3014214E1D09CC8700CAF2D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -66,6 +71,7 @@
 		301421751D09CD9600CAF2D4 /* Tutoriais.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tutoriais.storyboard; sourceTree = "<group>"; };
 		3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		301A16541D1B0C7E0059A254 /* Vonique 64 Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Vonique 64 Bold.ttf"; sourceTree = "<group>"; };
 		3074BBB11D13255F00621270 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		3074BBB71D132A2800621270 /* InspirationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InspirationProtocol.swift; sourceTree = "<group>"; };
 		307BA0631D145AE7008BCBD6 /* imagens.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imagens.json; sourceTree = "<group>"; };
@@ -126,7 +132,7 @@
 		301421411D09CC8700CAF2D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				301421401D09CC8700CAF2D4 /* MakeUp.app */,
+				301421401D09CC8700CAF2D4 /* Make TV.app */,
 				301421531D09CC8700CAF2D4 /* MakeUpTests.xctest */,
 				3014215E1D09CC8700CAF2D4 /* MakeUpUITests.xctest */,
 			);
@@ -136,6 +142,7 @@
 		301421421D09CC8700CAF2D4 /* MakeUp */ = {
 			isa = PBXGroup;
 			children = (
+				301A16541D1B0C7E0059A254 /* Vonique 64 Bold.ttf */,
 				307BA0631D145AE7008BCBD6 /* imagens.json */,
 				3074BBB61D13298200621270 /* Protocols */,
 				3074BBB51D13291700621270 /* Views */,
@@ -173,6 +180,7 @@
 				301421721D09CD9600CAF2D4 /* FirstViewController.swift */,
 				301421741D09CD9600CAF2D4 /* SecondViewController.swift */,
 				3014217C1D0A050200CAF2D4 /* CategoryTableViewController.swift */,
+				300D7BDF1D19A5DC00348305 /* FullScreenViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				3014217A1D09DFD300CAF2D4 /* InspirationCellCollectionViewCell.swift */,
 				3074BBB11D13255F00621270 /* CategoryCell.swift */,
 				307C4FC11D184BBC007C05E4 /* HeaderCell.swift */,
+				300D7BE11D19A60700348305 /* FullScreenCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,9 +251,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3014213F1D09CC8700CAF2D4 /* MakeUp */ = {
+		3014213F1D09CC8700CAF2D4 /* Make TV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 301421671D09CC8700CAF2D4 /* Build configuration list for PBXNativeTarget "MakeUp" */;
+			buildConfigurationList = 301421671D09CC8700CAF2D4 /* Build configuration list for PBXNativeTarget "Make TV" */;
 			buildPhases = (
 				9EB75C7EAB915FD136996B00 /* [CP] Check Pods Manifest.lock */,
 				3014213C1D09CC8700CAF2D4 /* Sources */,
@@ -257,9 +266,9 @@
 			);
 			dependencies = (
 			);
-			name = MakeUp;
+			name = "Make TV";
 			productName = MakeUp;
-			productReference = 301421401D09CC8700CAF2D4 /* MakeUp.app */;
+			productReference = 301421401D09CC8700CAF2D4 /* Make TV.app */;
 			productType = "com.apple.product-type.application";
 		};
 		301421521D09CC8700CAF2D4 /* MakeUpTests */ = {
@@ -315,6 +324,7 @@
 				TargetAttributes = {
 					3014213F1D09CC8700CAF2D4 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 59TJGNH243;
 					};
 					301421521D09CC8700CAF2D4 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -326,7 +336,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3014213B1D09CC8700CAF2D4 /* Build configuration list for PBXProject "MakeUp" */;
+			buildConfigurationList = 3014213B1D09CC8700CAF2D4 /* Build configuration list for PBXProject "Make TV" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -339,7 +349,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3014213F1D09CC8700CAF2D4 /* MakeUp */,
+				3014213F1D09CC8700CAF2D4 /* Make TV */,
 				301421521D09CC8700CAF2D4 /* MakeUpTests */,
 				3014215D1D09CC8700CAF2D4 /* MakeUpUITests */,
 			);
@@ -352,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3014214D1D09CC8700CAF2D4 /* Assets.xcassets in Resources */,
+				301A16551D1B0C7E0059A254 /* Vonique 64 Bold.ttf in Resources */,
 				301421711D09CD4400CAF2D4 /* Main.storyboard in Resources */,
 				301421771D09CD9600CAF2D4 /* Inspirations.storyboard in Resources */,
 				301421791D09CD9600CAF2D4 /* Tutoriais.storyboard in Resources */,
@@ -512,7 +523,9 @@
 				3014217D1D0A050200CAF2D4 /* CategoryTableViewController.swift in Sources */,
 				301421441D09CC8700CAF2D4 /* AppDelegate.swift in Sources */,
 				3074BBB81D132A2800621270 /* InspirationProtocol.swift in Sources */,
+				300D7BE01D19A5DC00348305 /* FullScreenViewController.swift in Sources */,
 				301421761D09CD9600CAF2D4 /* FirstViewController.swift in Sources */,
+				300D7BE21D19A60700348305 /* FullScreenCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,12 +550,12 @@
 /* Begin PBXTargetDependency section */
 		301421551D09CC8700CAF2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3014213F1D09CC8700CAF2D4 /* MakeUp */;
+			target = 3014213F1D09CC8700CAF2D4 /* Make TV */;
 			targetProxy = 301421541D09CC8700CAF2D4 /* PBXContainerItemProxy */;
 		};
 		301421601D09CC8700CAF2D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3014213F1D09CC8700CAF2D4 /* MakeUp */;
+			target = 3014213F1D09CC8700CAF2D4 /* Make TV */;
 			targetProxy = 3014215F1D09CC8700CAF2D4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -638,10 +651,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MakeUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.MakeUp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.MakeTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MakeUp/MakeUp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -654,10 +670,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "Brand Assets";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MakeUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.MakeUp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.bepid.MakeTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MakeUp/MakeUp-Bridging-Header.h";
 			};
 			name = Release;
@@ -715,7 +734,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3014213B1D09CC8700CAF2D4 /* Build configuration list for PBXProject "MakeUp" */ = {
+		3014213B1D09CC8700CAF2D4 /* Build configuration list for PBXProject "Make TV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				301421651D09CC8700CAF2D4 /* Debug */,
@@ -724,7 +743,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		301421671D09CC8700CAF2D4 /* Build configuration list for PBXNativeTarget "MakeUp" */ = {
+		301421671D09CC8700CAF2D4 /* Build configuration list for PBXNativeTarget "Make TV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				301421681D09CC8700CAF2D4 /* Debug */,
