@@ -97,7 +97,8 @@
                                                     <constraint firstAttribute="width" constant="80" id="hwg-US-ekI"/>
                                                     <constraint firstAttribute="height" constant="49" id="wan-lq-dMu"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="previous"/>
+                                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
+                                                <state key="normal" backgroundImage="PreviousButton"/>
                                                 <connections>
                                                     <action selector="previousAction:" destination="2Yk-wP-TmX" eventType="primaryActionTriggered" id="8Ah-ie-3Qv"/>
                                                 </connections>
@@ -109,7 +110,7 @@
                                                     <constraint firstAttribute="height" constant="49" id="dkm-aA-dhz"/>
                                                     <constraint firstAttribute="width" constant="80" id="x4z-6r-vtV"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="pause"/>
+                                                <state key="normal" backgroundImage="PauseButton"/>
                                                 <connections>
                                                     <action selector="playPauseAction:" destination="2Yk-wP-TmX" eventType="primaryActionTriggered" id="4nK-qI-gD6"/>
                                                 </connections>
@@ -121,7 +122,7 @@
                                                     <constraint firstAttribute="width" constant="80" id="5iE-s9-9hN"/>
                                                     <constraint firstAttribute="height" constant="49" id="7Ga-1N-IlK"/>
                                                 </constraints>
-                                                <state key="normal" backgroundImage="next"/>
+                                                <state key="normal" backgroundImage="NextButton"/>
                                                 <connections>
                                                     <action selector="nextAction:" destination="2Yk-wP-TmX" eventType="primaryActionTriggered" id="vWH-fd-Sch"/>
                                                 </connections>
@@ -270,8 +271,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="next" width="50" height="50"/>
-        <image name="pause" width="50" height="50"/>
-        <image name="previous" width="50" height="50"/>
+        <image name="NextButton" width="233" height="150"/>
+        <image name="PauseButton" width="233" height="150"/>
+        <image name="PreviousButton" width="233" height="150"/>
     </resources>
 </document>

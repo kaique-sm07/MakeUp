@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "previous.png",
+      "filename" : "PreviousButton.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "PreviousButton@2x.png",
       "scale" : "2x"
     },
     {

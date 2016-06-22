@@ -66,7 +66,7 @@ class SecondViewController: UIViewController {
 //        }
         
         self.playVideo()
-        self.playButton.setBackgroundImage(UIImage(named: "pause"), forState: .Normal)
+        self.playButton.setBackgroundImage(UIImage(named: "PauseButton"), forState: .Normal)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -74,7 +74,7 @@ class SecondViewController: UIViewController {
         
         //pause the video
         self.pauseVideo()
-        self.playButton.setBackgroundImage(UIImage(named: "play"), forState: .Normal)
+        self.playButton.setBackgroundImage(UIImage(named: "PlayButton"), forState: .Normal)
     }
     
     //function to get a youtube thumbnail image from the video ID
@@ -221,12 +221,12 @@ class SecondViewController: UIViewController {
     
     func playVideo() {
         self.videoController.player?.play()
-        self.playButton.setBackgroundImage(UIImage(named: "pause"), forState: .Normal)
+        self.playButton.setBackgroundImage(UIImage(named: "PauseButton"), forState: .Normal)
     }
     
     func pauseVideo() {
         self.videoController.player?.pause()
-        self.playButton.setBackgroundImage(UIImage(named: "play"), forState: .Normal)
+        self.playButton.setBackgroundImage(UIImage(named: "PlayButton"), forState: .Normal)
     }
 }
 
