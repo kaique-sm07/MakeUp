@@ -20,10 +20,13 @@ class FirstViewController: UIViewController{
         super.viewDidLoad()
         let appearance = UITabBarItem.appearance()
         let color : UIColor = UIColor(red: 187.0/255.0, green: 187.0/255.0, blue: 187.0/255.0, alpha: 1.0)
+        let otherColor : UIColor = UIColor(red: 1, green:1, blue: 1, alpha: 1.0)
         let attributes = [NSFontAttributeName:UIFont(name: "Vonique 64", size: 50)!, NSForegroundColorAttributeName: color]
+        let atributesFocused = [NSFontAttributeName:UIFont(name: "Vonique 64", size: 65)!, NSForegroundColorAttributeName: otherColor]
+        
+        appearance.setTitleTextAttributes(atributesFocused, forState:.Focused)
         appearance.setTitleTextAttributes(attributes, forState: .Normal)
-                    }
-
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
