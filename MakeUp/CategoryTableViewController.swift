@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import GameplayKit
 
 class CategoryTableViewController: UITableViewController {
     
@@ -111,13 +112,14 @@ class CategoryTableViewController: UITableViewController {
 
         }
         
-        var urls : [String] = []
-        for (index,subJson):(String, JSON) in self.json["Imagens"] {
+        var urls : [AnyObject] = []
+        for (_,subJson):(String, JSON) in self.json["Imagens"] {
             if (subJson["ocasiao"].int == categoriaSelecionada[0] || categoriaSelecionada[0] == 0) && (subJson["tom"].int == categoriaSelecionada[1] || categoriaSelecionada[1] == 0) && (subJson["intensidade"].int == categoriaSelecionada[2] || categoriaSelecionada[2] == 0){
                 urls.append(subJson["url"].string!)
             }
         }
         self.tableView.reloadData()
+        urls = GKRandomSource.sharedRandom().arrayByShufflingObjectsInArray(urls)
         self.performSegueWithIdentifier("detail", sender: urls)
 
         
