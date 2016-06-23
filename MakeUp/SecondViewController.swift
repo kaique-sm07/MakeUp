@@ -52,9 +52,7 @@ class SecondViewController: UIViewController {
         
         self.thumbnailImages = []
         
-        for id in self.urlArray {
-            self.getThumbnailImage(id)
-        }
+        self.getAllThumbnailImages()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -75,6 +73,13 @@ class SecondViewController: UIViewController {
         //pause the video
         self.pauseVideo()
         self.playButton.setBackgroundImage(UIImage(named: "PlayButton"), forState: .Normal)
+    }
+    
+    //function to get all youtube thumbnail images from the video ID array
+    func getAllThumbnailImages() {
+        for id in self.urlArray {
+            self.getThumbnailImage(id)
+        }
     }
     
     //function to get a youtube thumbnail image from the video ID
