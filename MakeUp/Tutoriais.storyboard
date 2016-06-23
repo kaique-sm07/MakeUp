@@ -91,7 +91,7 @@
                                         <rect key="frame" x="321" y="89" width="642" height="65"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khQ-kS-UX4" userLabel="PreviousButton">
-                                                <rect key="frame" x="151" y="3" width="90" height="60"/>
+                                                <rect key="frame" x="116" y="3" width="90" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                                 <state key="normal" backgroundImage="PreviousButton"/>
@@ -112,7 +112,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jpc-Fq-IAe" userLabel="NextButton">
-                                                <rect key="frame" x="401" y="3" width="90" height="60"/>
+                                                <rect key="frame" x="436" y="3" width="90" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <state key="normal" backgroundImage="NextButton"/>
                                                 <connections>
@@ -124,11 +124,11 @@
                                         <constraints>
                                             <constraint firstItem="khQ-kS-UX4" firstAttribute="width" secondItem="OCT-Ne-VsU" secondAttribute="width" id="0xV-8Y-VRp"/>
                                             <constraint firstItem="OCT-Ne-VsU" firstAttribute="centerY" secondItem="ems-vJ-GR8" secondAttribute="centerY" id="6lv-Wn-vTO"/>
-                                            <constraint firstItem="jpc-Fq-IAe" firstAttribute="leading" secondItem="OCT-Ne-VsU" secondAttribute="trailing" constant="35" id="7j6-Ih-3qh"/>
+                                            <constraint firstItem="jpc-Fq-IAe" firstAttribute="leading" secondItem="OCT-Ne-VsU" secondAttribute="trailing" constant="70" id="7j6-Ih-3qh"/>
                                             <constraint firstItem="OCT-Ne-VsU" firstAttribute="centerX" secondItem="ems-vJ-GR8" secondAttribute="centerX" id="EMU-z0-4QB"/>
                                             <constraint firstItem="jpc-Fq-IAe" firstAttribute="bottom" secondItem="OCT-Ne-VsU" secondAttribute="bottom" id="FOA-5O-VmZ"/>
                                             <constraint firstItem="jpc-Fq-IAe" firstAttribute="height" secondItem="OCT-Ne-VsU" secondAttribute="height" id="HMc-35-Fmh"/>
-                                            <constraint firstItem="OCT-Ne-VsU" firstAttribute="leading" secondItem="khQ-kS-UX4" secondAttribute="trailing" constant="35" id="IvR-MS-N9S"/>
+                                            <constraint firstItem="OCT-Ne-VsU" firstAttribute="leading" secondItem="khQ-kS-UX4" secondAttribute="trailing" constant="70" id="IvR-MS-N9S"/>
                                             <constraint firstItem="jpc-Fq-IAe" firstAttribute="width" secondItem="OCT-Ne-VsU" secondAttribute="width" id="KJ6-LW-PNQ"/>
                                             <constraint firstItem="jpc-Fq-IAe" firstAttribute="top" secondItem="OCT-Ne-VsU" secondAttribute="top" id="KkW-CQ-wkh"/>
                                             <constraint firstItem="khQ-kS-UX4" firstAttribute="bottom" secondItem="OCT-Ne-VsU" secondAttribute="bottom" id="WfF-Qo-5nJ"/>
